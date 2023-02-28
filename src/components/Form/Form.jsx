@@ -1,20 +1,23 @@
 import React from 'react';
 import { useState } from 'react';
 import css from './Form.module.css';
+import { useDispatch } from 'react-redux';
 
 import inititalState from 'components/Form/initialState';
 
-import { useSelector, useDispatch } from 'react-redux';
-
-import { getAllContacts } from 'redux/contacts/contacts-selectors';
+// import { getAllContacts } from 'redux/contacts/contacts-selectors';
 
 import { addContact } from '../../redux/contacts/contacts-slice';
 
 export const Form = () => {
   const [state, setState] = useState({ ...inititalState });
-  const allContacts = useSelector(getAllContacts);
+  // const allContacts = useSelector(getAllContacts);
 
   const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   dispatch(fetchAllContacts());
+  // }, [dispatch]);
 
   const handleChange = event => {
     const { name, value } = event.target;
@@ -29,11 +32,11 @@ export const Form = () => {
 
     setState({ ...inititalState });
     console.log({ name, number });
-    if (isDublicate(name)) {
-      alert(`${name} is alredy in contacts!`);
-      setState({ name, number });
-      return false;
-    }
+    // if (isDublicate(name)) {
+    //   alert(`${name} is alredy in contacts!`);
+    //   setState({ name, number });
+    //   return false;
+    // }
 
     dispatch(addContact({ name, number }));
 
@@ -46,15 +49,6 @@ export const Form = () => {
   //     number: '',
   //   });
   // };
-
-  const isDublicate = name => {
-    const normalizedName = name.toLowerCase();
-    const result = allContacts.find(({ name }) => {
-      return name.toLowerCase() === normalizedName;
-    });
-
-    return Boolean(result);
-  };
 
   const { name, number } = state;
 

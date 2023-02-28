@@ -5,6 +5,9 @@ import {
   fetchAllContactsLoading,
   fetchAllContactsSuccess,
   fetchAllContactsError,
+  fetchAddContactLoading,
+  fetchAddContactSuccess,
+  fetchAddContactError,
 } from './contacts-actions';
 
 const initialState = {
@@ -25,6 +28,18 @@ const contactsSlice = createSlice({
       store.items = payload;
     },
     [fetchAllContactsError]: (store, { payload }) => {
+      store.isLoading = false;
+      store.error = payload;
+    },
+
+    [fetchAddContactLoading]: store => {
+      store.isLoading = true;
+    },
+    [fetchAddContactSuccess]: (store, { payload }) => {
+      store.isLoading = false;
+      store.items.push(payload);
+    },
+    [fetchAddContactError]: (store, { payload }) => {
       store.isLoading = false;
       store.error = payload;
     },
