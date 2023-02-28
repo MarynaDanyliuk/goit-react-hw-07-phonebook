@@ -1,3 +1,12 @@
+import { createAction } from '@reduxjs/toolkit';
+
+export const fetchAllContactsLoading = createAction('contacts/fetch/loading');
+
+export const fetchAllContactsSuccess = createAction('contacts/fetch/success');
+
+export const fetchAllContactsError = createAction('contacts/fetch/error');
+
+// _____________redux______________________
 // import { createAction } from '@reduxjs/toolkit';
 // import { nanoid } from 'nanoid';
 
