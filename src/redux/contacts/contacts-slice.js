@@ -1,7 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 // import { nanoid } from 'nanoid';
 
-import actions from './contacts-actions';
+import {
+  fetchAllContactsLoading,
+  fetchAllContactsSuccess,
+  fetchAllContactsError,
+} from './contacts-actions';
 
 const initialState = {
   items: [],
@@ -13,14 +17,14 @@ const contactsSlice = createSlice({
   name: 'contacts',
   initialState,
   reducers: {
-    [actions.fetchAllContactsLoading]: store => {
+    [fetchAllContactsLoading]: store => {
       store.isLoading = true;
     },
-    [actions.fetchAllContactsSuccess]: (store, { payload }) => {
+    [fetchAllContactsSuccess]: (store, { payload }) => {
       store.isLoading = false;
       store.items = payload;
     },
-    [actions.fetchAllContactsError]: (store, { payload }) => {
+    [fetchAllContactsError]: (store, { payload }) => {
       store.isLoading = false;
       store.error = payload;
     },

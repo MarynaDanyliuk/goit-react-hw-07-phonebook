@@ -1,5 +1,5 @@
 import * as api from 'services/serviceApiContacts';
-import actions from './contacts-actions';
+import * as actions from './contacts-actions';
 
 export const fetchAllBooks = () => {
   const func = async dispatch => {
