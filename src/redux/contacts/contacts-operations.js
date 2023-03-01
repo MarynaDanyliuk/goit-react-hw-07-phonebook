@@ -43,3 +43,18 @@ export const fetchAddContact = data => {
   };
   return func;
 };
+
+export const fetchDeleteContact = id => {
+  const func = async (dispatch, getState) => {
+    try {
+      //   const { contacts } = getState();
+
+      dispatch(actions.fetchDeleteContactLoading());
+      const result = await api.deleteContact(id);
+      dispatch(actions.fetchDeleteContactSuccess(result));
+    } catch ({ response }) {
+      dispatch(actions.fetchDeleteContactError(response.data.messange));
+    }
+  };
+  return func;
+};

@@ -7,7 +7,8 @@ import inititalState from 'components/Form/initialState';
 
 // import { getAllContacts } from 'redux/contacts/contacts-selectors';
 
-import { addContact } from '../../redux/contacts/contacts-slice';
+// import { addContact } from '../../redux/contacts/contacts-slice';
+import { fetchAddContact } from 'redux/contacts/contacts-operations';
 
 export const Form = () => {
   const [state, setState] = useState({ ...inititalState });
@@ -38,7 +39,7 @@ export const Form = () => {
     //   return false;
     // }
 
-    dispatch(addContact({ name, number }));
+    dispatch(fetchAddContact({ name, number }));
 
     // reset();
   };

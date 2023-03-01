@@ -10,6 +10,8 @@ const rootReducer = combineReducers({
   filter: filterReducer,
 });
 
+// export default rootReducer;
+
 const persistConfig = {
   key: 'root',
   storage,

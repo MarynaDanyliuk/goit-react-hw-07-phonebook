@@ -8,6 +8,14 @@ export const fetchAddContactLoading = createAction('contacts/add/loading');
 export const fetchAddContactSuccess = createAction('contacts/add/success');
 export const fetchAddContactError = createAction('contacts/add/error');
 
+export const fetchDeleteContactLoading = createAction(
+  'contacts/delete/loading'
+);
+export const fetchDeleteContactSuccess = createAction(
+  'contacts/delete/success'
+);
+export const fetchDeleteContactError = createAction('contacts/delete/error');
+
 // _____________redux______________________
 // import { createAction } from '@reduxjs/toolkit';
 // import { nanoid } from 'nanoid';
