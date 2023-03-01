@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-// import { nanoid } from 'nanoid';
 
 import {
   fetchAllContactsLoading,
@@ -28,7 +27,7 @@ const contactsSlice = createSlice({
       store.isLoading = true;
     },
     [fetchAllContactsSuccess]: (store, { payload }) => {
-      console.log(payload);
+      // console.log(payload);
       store.isLoading = false;
       store.items = payload;
     },

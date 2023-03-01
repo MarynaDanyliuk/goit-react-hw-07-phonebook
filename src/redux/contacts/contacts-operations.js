@@ -32,6 +32,7 @@ export const fetchAddContact = data => {
       const { contacts } = getState();
       if (isDublicate(contacts.items, data)) {
         alert(`${data.name} is alredy in contacts!`);
+
         return false;
       }
       dispatch(actions.fetchAddContactLoading());

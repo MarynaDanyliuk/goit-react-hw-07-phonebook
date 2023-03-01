@@ -10,6 +10,8 @@ import { fetchDeleteContact } from 'redux/contacts/contacts-operations';
 export const ContactsList = () => {
   const filteredContacts = useSelector(getFilteredContacts);
 
+  // console.log(filteredContacts);
+
   const elements = filteredContacts.map(({ id, name, number }) => (
     <li key={id} className={css.contact}>
       {name}: {number}
