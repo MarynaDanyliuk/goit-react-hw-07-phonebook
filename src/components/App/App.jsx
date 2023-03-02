@@ -1,12 +1,12 @@
 import React from 'react';
 import { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 
 import { ContactsList } from 'components/ContactsList/ContactsList';
 import { Form } from 'components/Form/Form';
 import { Filter } from 'components/Filter/Filter';
 
-import { getFilteredContacts } from '../../redux/contacts/contacts-selectors';
+// import { getFilteredContacts } from '../../redux/contacts/contacts-selectors';
 
 import { useDispatch } from 'react-redux';
 
@@ -15,9 +15,9 @@ import { fetchAllContacts } from 'redux/contacts/contacts-operations';
 import css from './App.module.css';
 
 export const App = () => {
-  const filteredContacts = useSelector(getFilteredContacts);
+  // const filteredContacts = useSelector(getFilteredContacts);
 
-  const isContacts = Boolean(filteredContacts.length);
+  // const isContacts = Boolean(filteredContacts.length);
 
   const dispatch = useDispatch();
 
