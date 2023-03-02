@@ -40,8 +40,9 @@ export const App = () => {
       <Form />
       <h2 className={css.title}>Contacts</h2>
       <Filter />
-      {isContacts && <ContactsList />}
-      {!isContacts && <p>No such contacts in Phonebook</p>}
+      <ContactsList />
+      {/* {isContacts && <ContactsList />}
+      {!isContacts && <p>No such contacts in Phonebook</p>} */}
     </div>
   );
 };
