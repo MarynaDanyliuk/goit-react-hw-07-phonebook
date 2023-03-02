@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import {
-  persistStore,
+  // persistStore,
   FLUSH,
   REHYDRATE,
   PAUSE,
@@ -11,7 +11,7 @@ import {
 
 import rootReducer from './root-reducer';
 
-export const store = configureStore({
+const store = configureStore({
   reducer: rootReducer,
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
@@ -21,7 +21,9 @@ export const store = configureStore({
     }),
 });
 
-export const persistor = persistStore(store);
+export default store;
+
+// export const persistor = persistStore(store);
 
 // ________________________________________
 // export const store = configureStore({
