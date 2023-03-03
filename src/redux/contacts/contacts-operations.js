@@ -30,7 +30,7 @@ export const fetchAddContact = createAsyncThunk(
     }
   },
   {
-    condition: ({ name }, { getState }, { setState }) => {
+    condition: ({ name }, { getState }) => {
       const { contacts } = getState();
       const normalizedName = name.toLowerCase();
       const result = contacts.items.find(({ name }) => {
@@ -44,6 +44,8 @@ export const fetchAddContact = createAsyncThunk(
     },
   }
 );
+
+// { setState }
 
 export const fetchDeleteContact = createAsyncThunk(
   'contacts/delete',
