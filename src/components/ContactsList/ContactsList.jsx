@@ -12,9 +12,9 @@ export const ContactsList = () => {
 
   // console.log(filteredContacts);
 
-  const elements = filteredContacts.map(({ id, name, number }) => (
+  const elements = filteredContacts.map(({ id, name, phone }) => (
     <li key={id} className={css.contact}>
-      {name}: {number}
+      {name}: {phone}
       <button
         className={css.button}
         id={id}
