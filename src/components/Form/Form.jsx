@@ -1,18 +1,19 @@
 import React from 'react';
 import { useState } from 'react';
 import css from './Form.module.css';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import inititalState from 'components/Form/initialState';
 
-// import { getAllContacts } from 'redux/contacts/contacts-selectors';
+import { getAllContacts } from 'redux/contacts/contacts-selectors';
 
 // import { addContact } from '../../redux/contacts/contacts-slice';
 import { fetchAddContact } from 'redux/contacts/contacts-operations';
 
 export const Form = () => {
   const [state, setState] = useState({ ...inititalState });
-  // const allContacts = useSelector(getAllContacts);
+  const allContacts = useSelector(getAllContacts);
+  console.log(allContacts);
 
   const dispatch = useDispatch();
 
@@ -31,13 +32,22 @@ export const Form = () => {
   const handleSubmit = event => {
     event.preventDefault();
 
+    // const isDublicate = (contacts, state) => {
+    //   const normalizedName = name.toLowerCase();
+    //   const result = contacts.items.find(({ name }) => {
+    //     return name.toLowerCase() === normalizedName;
+    //   });
+
+    //   return Boolean(result);
+    // };
+
     setState({ ...inititalState });
     console.log({ name, phone });
-    // if (isDublicate(name)) {
-    //   alert(`${name} is alredy in contacts!`);
-    //   setState({ name, number });
-    //   return false;
-    // }
+    if (isDublicate(name)) {
+      alert(`${name} is alredy in contacts!`);
+      setState({ name, phone });
+      return false;
+    }
 
     dispatch(fetchAddContact({ name, phone }));
 
@@ -50,6 +60,15 @@ export const Form = () => {
   //     number: '',
   //   });
   // };
+
+  const isDublicate = name => {
+    const normalizedName = name.toLowerCase();
+    const result = allContacts.find(({ name }) => {
+      return name.toLowerCase() === normalizedName;
+    });
+
+    return Boolean(result);
+  };
 
   const { name, phone } = state;
 
