@@ -1,4 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+// import { useState } from 'react';
+
+// import inititalState from 'components/Form/initialState';
 
 import * as api from 'services/serviceApiContacts';
 // import * as actions from './contacts-actions';
@@ -13,19 +16,6 @@ export const fetchAllContacts = createAsyncThunk(
     } catch ({ response }) {
       return thunkAPI.rejectWithValue(response.data);
     }
-  },
-  {
-    // condition: ({ name, number }, { getState }) => {
-    //   const { contacts } = getState;
-    //   const normalizedName = name.toLowerCase();
-    //   const result = contacts.items.find(({ name }) => {
-    //     return name.toLowerCase() === normalizedName;
-    //   });
-    //   if (result) {
-    //     alert(`${name} is alredy in contacts!`);
-    //     return false;
-    //   }
-    // },
   }
 );
 
@@ -38,6 +28,20 @@ export const fetchAddContact = createAsyncThunk(
     } catch ({ response }) {
       return rejectWithValue(response.data);
     }
+  },
+  {
+    condition: ({ name }, { getState }, { setState }) => {
+      const { contacts } = getState();
+      const normalizedName = name.toLowerCase();
+      const result = contacts.items.find(({ name }) => {
+        return name.toLowerCase() === normalizedName;
+      });
+      if (result) {
+        alert(`${name} is alredy in contacts!`);
+        // setState({ ...contacts });
+        return false;
+      }
+    },
   }
 );
 
